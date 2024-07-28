@@ -567,6 +567,6 @@ class DriveEntity(Document):
             for child in self.get_children():
                 child.unshare(user, user_type)
 
+
 def on_doctype_update():
     frappe.db.add_index("Drive Entity", ["title"])
-
