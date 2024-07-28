@@ -10,7 +10,12 @@
 
     <div class="flex flex-col gap-5 p-4 items-center">
       <h1 class="text-xl">Tools</h1>
-      <div @click="clickHandler" v-for="tool in tools" :id="tool.name">
+      <div
+        @click="clickHandler"
+        @mouseup="save_draw"
+        v-for="tool in tools"
+        :id="tool.name"
+      >
         {{ tool.name }}
       </div>
     </div>
@@ -55,8 +60,16 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.canvas = new this.fabric.Canvas("hello")
+    let canvas_json = localStorage.getItem("canvasState")
+    this.canvas.loadFromJSON(canvas_json)
+    // Adjust canvas size to match the window size
+    // Add a rectangle
+  },
   methods: {
     clickHandler(event) {
+      this.canvas.on("mouse:up", this.save_draw())
       console.log(event.target.id)
       if (event.target.id === "WColor") {
         this.canvas.freeDrawingBrush = new fabric.CircleBrush(this.canvas)
@@ -77,10 +90,10 @@ export default {
       if (event.target.id === "Spray") {
         this.canvas.freeDrawingBrush = new fabric.SprayBrush(this.canvas)
         this.canvas.freeDrawingBrush.width = 10
-        this.canvas.isDrawingMode = true
       }
 
       if (event.target.id === "Rect") {
+        this.canvas.isDrawingMode = false
         const rect = new fabric.Rect({
           left: 0,
           top: 100,
@@ -98,6 +111,7 @@ export default {
       }
 
       if (event.target.id === "Move") {
+        this.canvas.isDrawingMode = false
         let all_objects = this.canvas.getObjects()
         if (all_objects.length > 0) {
           for (let i = 0; i < all_objects.length; i++) {
@@ -109,6 +123,7 @@ export default {
       }
 
       if (event.target.id === "Triangle") {
+        this.canvas.isDrawingMode = false
         var triangle = new fabric.Triangle({
           width: 150,
           height: 100,
@@ -130,6 +145,7 @@ export default {
       }
 
       if (event.target.id === "Circle") {
+        this.canvas.isDrawingMode = false
         var circle = new fabric.Circle({
           left: 300,
           top: 300,
@@ -140,6 +156,7 @@ export default {
       }
 
       if (event.target.id === "Text") {
+        this.canvas.isDrawingMode = false
         var textEditable = new fabric.Textbox("Edit me", {
           left: 70,
           width: 500,
@@ -148,13 +165,15 @@ export default {
 
         this.canvas.add(textEditable)
       }
+      this.save_draw()
+    },
+    save_draw() {
+      let canvas_json = this.canvas.toJSON()
+      console.log()
+      if (canvas_json.objects.length > 0) {
+        localStorage.setItem("canvasState", JSON.stringify(canvas_json))
+      }
     },
   },
-  mounted() {
-    this.canvas = new this.fabric.Canvas("hello")
-    // Adjust canvas size to match the window size
-    // Add a rectangle
-  },
-  computed() {},
 }
 </script>
