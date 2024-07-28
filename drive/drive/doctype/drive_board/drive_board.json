@@ -7,7 +7,7 @@
   "doctype": "DocType",
   "editable_grid": 1,
   "engine": "InnoDB",
-  "field_order": ["title", "content", "settings", "raw_content"],
+  "field_order": ["title", "settings"],
   "fields": [
     {
       "fieldname": "title",
@@ -18,24 +18,13 @@
     },
     {
       "default": "AAA=",
-      "fieldname": "content",
-      "fieldtype": "Long Text",
-      "label": "Content"
-    },
-    {
-      "default": "{\n   \"docWidth\": false,\n   \"docSize\": true,\n   \"docFont\": \"font-fd-sans\",\n   \"docHeader\": false\n}",
       "fieldname": "settings",
       "fieldtype": "JSON",
       "label": "Settings"
-    },
-    {
-      "fieldname": "raw_content",
-      "fieldtype": "Long Text",
-      "label": "Raw Content"
     }
   ],
   "links": [],
-  "modified": "2024-07-28 11:16:35.585670",
+  "modified": "2024-07-28 17:20:05.991913",
   "modified_by": "Administrator",
   "module": "Drive",
   "name": "Drive Board",

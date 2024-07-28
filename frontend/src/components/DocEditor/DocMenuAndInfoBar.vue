@@ -181,7 +181,7 @@
           <span
             class="inline-flex items-center gap-2.5 mb-5 text-gray-800 font-medium text-lg w-full"
           >
-            Style
+            No Style
           </span>
           <span class="font-medium text-gray-600 text-xs my-2">TITLE</span>
           <div class="w-full flex justify-between gap-x-1.5 mb-6">

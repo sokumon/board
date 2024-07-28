@@ -115,6 +115,7 @@ import Trash from "./EspressoIcons/Trash.vue"
 import SidebarItem from "@/components/SidebarItem.vue"
 import Home from "./EspressoIcons/Home.vue"
 import StorageBar from "./StorageBar.vue"
+import Board from "./Board.vue"
 
 export default {
   name: "Sidebar",
@@ -182,8 +183,8 @@ export default {
         },
         {
           label: "Board",
-          route: "/trash",
-          icon: Trash,
+          route: "/board",
+          icon: Board,
           highlight: this.$store.state.currentBreadcrumbs[0].label === "Trash",
         },
       ]

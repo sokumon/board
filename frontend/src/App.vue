@@ -7,7 +7,7 @@
     <!-- Main container with scroll -->
     <div class="h-full w-full flex flex-col">
       <SearchPopup
-        v-if="isLoggedIn && showSearchPopup && isDrawPage"
+        v-if="isLoggedIn && showSearchPopup"
         v-model="showSearchPopup"
       />
       <div

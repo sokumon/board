@@ -37,7 +37,11 @@
         </Dropdown>
         <div v-if="isLoggedIn" class="block sm:flex">
           <Button
-            v-if="$route.name === 'Document' || $route.name === 'File'"
+            v-if="
+              $route.name === 'Document' ||
+              $route.name === 'File' ||
+              $route.name === 'Draw'
+            "
             :variant="'solid'"
             :disabled="$store.state.entityInfo[0]?.owner !== 'You'"
             class="bg-gray-200 rounded flex justify-center items-center px-1"
@@ -229,8 +233,20 @@ export default {
             },
             {
               label: "New Board",
-              icon: NewFolder,
-              onClick: () => (this.showNewFolderDialog = true),
+              icon: NewFile,
+              onClick: async () => {
+                await this.$resources.createBoard.submit({
+                  title: "Untitled Board",
+                  content: null,
+                  parent: this.$store.state.currentFolderID,
+                })
+                this.$router.push({
+                  name: "Draw",
+                  params: { entityName: this.previewEntity.name },
+                })
+              },
+
+              isEnabled: () => this.selectedEntities?.length === 0,
             },
           ],
         },
@@ -410,6 +426,23 @@ export default {
           data.modified = formatDate(data.modified)
           data.creation = formatDate(data.creation)
           this.$store.commit("setEntityInfo", [data])
+          this.previewEntity = data
+          data.owner = "You"
+        },
+        onError(data) {
+          console.log(data)
+        },
+        auto: false,
+      }
+    },
+    createBoard() {
+      return {
+        url: "drive.api.files.create_board_entity",
+        onSuccess(data) {
+          data.modified = formatDate(data.modified)
+          data.creation = formatDate(data.creation)
+          this.$store.commit("setEntityInfo", [data])
+          console.log(data)
           this.previewEntity = data
           data.owner = "You"
         },

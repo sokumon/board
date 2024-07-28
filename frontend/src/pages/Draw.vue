@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full">
-    <TextEditor
+    <!-- <TextEditor
       v-if="contentLoaded"
       v-model:yjsContent="yjsContent"
       v-model:rawContent="rawContent"
@@ -15,7 +15,8 @@
       :entity="entity"
       @mentioned-users="(val) => (mentionedUsers = val)"
       @save-document="saveDocument"
-    />
+    /> -->
+    <FabCanvas class="flex h-screen"></FabCanvas>
     <ShareDialog
       v-if="showShareDialog"
       v-model="showShareDialog"
@@ -39,6 +40,7 @@ import { useStore } from "vuex"
 import { formatSize, formatDate } from "@/utils/format"
 import { createResource } from "frappe-ui"
 import { watchDebounced } from "@vueuse/core"
+import FabCanvas from "../components/FabCanvas.vue"
 
 const TextEditor = defineAsyncComponent(() =>
   import("@/components/DocEditor/TextEditor.vue")
@@ -46,7 +48,6 @@ const TextEditor = defineAsyncComponent(() =>
 const ShareDialog = defineAsyncComponent(() =>
   import("@/components/ShareDialog/ShareDialog.vue")
 )
-
 const store = useStore()
 const router = useRouter()
 const emitter = inject("emitter")

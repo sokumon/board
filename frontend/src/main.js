@@ -46,5 +46,7 @@ setConfig("resourceFetcher", (options) => {
     },
   })
 })
+
+app.config.globalProperties.fabric = fabric
 app.component("Button", Button)
 app.mount("#app")

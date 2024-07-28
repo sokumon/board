@@ -104,17 +104,12 @@ const routes = [
     component: () => import("@/pages/Test.vue"),
   },
   {
-    path: "/draw",
+    path: "/draw/:entityName",
     name: "Draw",
     component: () => import("@/pages/Draw.vue"),
+    meta: { sidebar: false, documentPage: true, isHybridRoute: true },
     props: true,
-    meta: {
-      sidebar: true,
-      isHybridRoute: true,
-      filePage: true,
-      isDrawPage: true,
-    },
-    beforeEnter: [setRootBreadCrumb, clearStore],
+    beforeEnter: [clearStore],
   },
   {
     path: "/login",
