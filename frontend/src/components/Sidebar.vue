@@ -180,6 +180,12 @@ export default {
           icon: Trash,
           highlight: this.$store.state.currentBreadcrumbs[0].label === "Trash",
         },
+        {
+          label: "Board",
+          route: "/trash",
+          icon: Trash,
+          highlight: this.$store.state.currentBreadcrumbs[0].label === "Trash",
+        },
       ]
     },
   },

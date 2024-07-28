@@ -104,6 +104,19 @@ const routes = [
     component: () => import("@/pages/Test.vue"),
   },
   {
+    path: "/draw",
+    name: "Draw",
+    component: () => import("@/pages/Draw.vue"),
+    props: true,
+    meta: {
+      sidebar: true,
+      isHybridRoute: true,
+      filePage: true,
+      isDrawPage: true,
+    },
+    beforeEnter: [setRootBreadCrumb, clearStore],
+  },
+  {
     path: "/login",
     name: "Login",
     redirect: () => {
@@ -124,7 +137,7 @@ let router = createRouter({
   routes,
 })
 
-const HybridRouteArray = ["File", "Folder", "Document"]
+const HybridRouteArray = ["File", "Folder", "Document", "Draw"]
 
 router.beforeEach((to, from, next) => {
   // If they hit a public page log them in

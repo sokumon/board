@@ -403,6 +403,12 @@ export default {
           handler: () => this.newDocument(),
           isEnabled: () => this.selectedEntities.length === 0,
         },
+        {
+          label: "New Board",
+          icon: NewFile,
+          handler: () => this.newDocument(),
+          isEnabled: () => this.selectedEntities.length === 0,
+        },
         /*{
           label: "Paste",
           icon: "clipboard",

@@ -227,6 +227,11 @@ export default {
 
               isEnabled: () => this.selectedEntities?.length === 0,
             },
+            {
+              label: "New Board",
+              icon: NewFolder,
+              onClick: () => (this.showNewFolderDialog = true),
+            },
           ],
         },
       ],

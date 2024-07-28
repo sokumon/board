@@ -7,7 +7,7 @@
     <!-- Main container with scroll -->
     <div class="h-full w-full flex flex-col">
       <SearchPopup
-        v-if="isLoggedIn && showSearchPopup"
+        v-if="isLoggedIn && showSearchPopup && isDrawPage"
         v-model="showSearchPopup"
       />
       <div
@@ -120,6 +120,7 @@ export default {
   },
   methods: {
     handleDefaultContext(event) {
+      console.log(event)
       if (this.$route.meta.documentPage) {
         return
       } else if (
@@ -134,6 +135,9 @@ export default {
     },
     async currentPageEmitTrigger() {
       this.emitter.emit("fetchFolderContents")
+    },
+    isDrawPage() {
+      return this.$route.meta.isDrawPage
     },
     addKeyboardShortcut() {
       window.addEventListener("keydown", (e) => {
