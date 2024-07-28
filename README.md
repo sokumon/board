@@ -1,3 +1,31 @@
+# Board
+
+# This is my submission for the FOSSHACK
+
+## Why build this
+
+I used to love this Google project called Jamboard.I hav
+Its basically a whiteboard app which stores the whiteboard drawings inside of Google drive
+
+Google in classic google fashion shut the project down
+
+Thus, I want to recreate my version of it
+
+## Feature i want to build
+
+[X] A canvas to draw
+[X] A toolbar to edit the drawing styles, shapes etc
+[X] Saving or Downloading the work (it stores to localStorage)
+[] Make it work inside Frappe Drive cause Jamboard works inside of Google Drive
+
+## Tech Stack
+
+#### (this is temporary and may change later )
+
+- Frappe Framework (to do all the crud stuff)
+- Vuejs Frontend
+- Maybe a wasm canvas to do the actual whiteboard
+
 <div align="center" markdown="1">
 
 <picture>
