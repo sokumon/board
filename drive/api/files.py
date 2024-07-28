@@ -90,6 +90,7 @@ def create_document_entity(title, content, parent=None):
     drive_entity.save()
     return drive_entity
 
+
 @frappe.whitelist()
 def create_board_entity(title, content, parent=None):
     try:
@@ -110,10 +111,10 @@ def create_board_entity(title, content, parent=None):
             "Cannot access folder due to insufficient permissions",
             frappe.PermissionError,
         )
-    
+
     drive_doc = frappe.new_doc("Drive Board")
     drive_doc.title = new_title
-    drive_doc.settings = json.dumps({"default":True})
+    drive_doc.settings = json.dumps({"default": True})
     drive_doc.save()
 
     drive_entity = frappe.new_doc("Drive Entity")
@@ -126,6 +127,7 @@ def create_board_entity(title, content, parent=None):
     drive_entity.flags.file_created = True
     drive_entity.save()
     return drive_entity
+
 
 def create_uploads_directory(user=None):
     user_directory_name = get_user_directory(user).name
