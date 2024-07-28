@@ -34,7 +34,7 @@ export default {
           name: "Pencil",
         },
         {
-          name: "Paint",
+          name: "WColor",
         },
         {
           name: "Spray",
@@ -62,8 +62,11 @@ export default {
   },
   mounted() {
     this.canvas = new this.fabric.Canvas("hello")
-    let canvas_json = localStorage.getItem("canvasState")
-    this.canvas.loadFromJSON(canvas_json)
+    if (localStorage.getItem("canvasState")) {
+      let canvas_json = localStorage.getItem("canvasState")
+      this.canvas.loadFromJSON(canvas_json)
+    }
+
     // Adjust canvas size to match the window size
     // Add a rectangle
   },

@@ -13,10 +13,10 @@ Thus, I want to recreate my version of it
 
 ## Feature i want to build
 
-[X] A canvas to draw
-[X] A toolbar to edit the drawing styles, shapes etc
-[X] Saving or Downloading the work (it stores to localStorage)
-[] Make it work inside Frappe Drive cause Jamboard works inside of Google Drive
+- [x] A canvas to draw
+- [x] A toolbar to edit the drawing styles, shapes etc
+- [x] Saving or Downloading the work (it stores to localStorage)
+- [] Make it work inside Frappe Drive cause Jamboard works inside of Google Drive
 
 ## Tech Stack
 
