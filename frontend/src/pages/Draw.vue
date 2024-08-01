@@ -128,7 +128,7 @@ const getDocument = createResource({
     settings.value = JSON.parse(data.settings)
     title.value = data.title
     oldTitle.value = data.title
-    yjsContent.value = toUint8Array(data.content)
+    // yjsContent.value = toUint8Array(data.content)
     rawContent.value = data.raw_content
     isWritable.value = data.owner === userId.value || !!data.write
     store.commit("setHasWriteAccess", isWritable)
@@ -168,6 +168,7 @@ const getDocument = createResource({
     store.commit("setCurrentBreadcrumbs", currentBreadcrumbs)
   },
   onError(error) {
+    console.log(error)
     if (error && error.exc_type === "PermissionError") {
       store.commit("setError", {
         iconName: "alert-triangle",

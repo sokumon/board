@@ -253,6 +253,13 @@ export default {
           },
         },
         {
+          label: "Board",
+          icon: Presentation,
+          onClick: () => {
+            this.$store.state.activeFilters.push("Board")
+          },
+        },
+        {
           label: "Unknown",
           icon: Unknown,
           onClick: () => {

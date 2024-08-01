@@ -102,7 +102,7 @@ def create_board_entity(title, content, parent=None):
     parent = frappe.form_dict.parent or user_directory.name
 
     if not frappe.has_permission(
-        doctype="Drive Board",
+        doctype="Drive Entity",
         doc=parent,
         ptype="write",
         user=frappe.session.user,
@@ -112,17 +112,12 @@ def create_board_entity(title, content, parent=None):
             frappe.PermissionError,
         )
 
-    drive_doc = frappe.new_doc("Drive Board")
-    drive_doc.title = new_title
-    drive_doc.settings = json.dumps({"default": True})
-    drive_doc.save()
-
     drive_entity = frappe.new_doc("Drive Entity")
     drive_entity.title = new_title
     drive_entity.name = uuid.uuid4().hex
     drive_entity.parent_drive_entity = parent
     drive_entity.mime_type = "board"
-    drive_entity.document = drive_doc
+    drive_entity.file_kind = ["PDF"]
     drive_entity.file_size = 0
     drive_entity.flags.file_created = True
     drive_entity.save()
