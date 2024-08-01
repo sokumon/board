@@ -79,7 +79,7 @@ def mime_to_human(mime_type, is_group):
         "application/gzip": "Archive",
         "application/x-bzip2": "Archive",
         # For Board
-        "board":"Board"
+        "board": "Board",
     }
     if is_group:
         return "Folder"
