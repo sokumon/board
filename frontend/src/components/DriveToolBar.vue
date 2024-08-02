@@ -130,6 +130,7 @@ import Image from "./MimeIcons/Image.vue"
 import Video from "./MimeIcons/Video.vue"
 import PDF from "./MimeIcons/PDF.vue"
 import Unknown from "./MimeIcons/Unknown.vue"
+import Board from "./MimeIcons/Board.vue"
 
 export default {
   name: "DriveToolBar",
@@ -254,7 +255,7 @@ export default {
         },
         {
           label: "Board",
-          icon: Presentation,
+          icon: Board,
           onClick: () => {
             this.$store.state.activeFilters.push("Board")
           },
