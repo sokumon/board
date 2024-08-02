@@ -57,6 +57,9 @@ export default {
         {
           name: "Erase",
         },
+        {
+          name: "Clear",
+        },
       ],
     }
   },
@@ -167,6 +170,10 @@ export default {
         })
 
         this.canvas.add(textEditable)
+      }
+
+      if (event.target.id === "Clear") {
+        this.canvas.clear()
       }
       this.save_draw()
     },
