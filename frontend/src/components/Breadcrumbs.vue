@@ -101,12 +101,12 @@ export default {
         const storeTitle = $store.state.entityInfo[0]?.title
         const folderTitle = $store.state.currentFolder[0]?.title
         let result
-
         switch (name) {
           case "Folder":
             result = folderTitle
             break
           case "Document":
+          case "Draw":
           case "File":
             result =
               lastBreadcrumb.label !== storeTitle
@@ -146,6 +146,7 @@ export default {
     },
     crumbs() {
       if (window.innerWidth > 640) return this.breadcrumbLinks
+      console.log(this.breadcrumbLinks.slice(-1))
       return this.breadcrumbLinks.slice(-1)
     },
   },

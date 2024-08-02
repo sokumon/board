@@ -42,9 +42,6 @@ import { createResource } from "frappe-ui"
 import { watchDebounced } from "@vueuse/core"
 import FabCanvas from "../components/FabCanvas.vue"
 
-const TextEditor = defineAsyncComponent(() =>
-  import("@/components/DocEditor/TextEditor.vue")
-)
 const ShareDialog = defineAsyncComponent(() =>
   import("@/components/ShareDialog/ShareDialog.vue")
 )
@@ -156,7 +153,7 @@ const getDocument = createResource({
       if (idx === data.breadcrumbs.length - 1) {
         currentBreadcrumbs.push({
           label: item.title,
-          route: "/document/" + item.name,
+          route: "/draw/" + item.name,
         })
       } else {
         currentBreadcrumbs.push({

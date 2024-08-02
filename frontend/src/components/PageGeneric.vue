@@ -868,6 +868,11 @@ export default {
           name: "Document",
           params: { entityName: entity.name },
         })
+      } else if (entity.mime_type == "board") {
+        this.$router.push({
+          name: "Draw",
+          params: { entityName: entity.name },
+        })
       } else {
         this.$router.push({
           name: "File",

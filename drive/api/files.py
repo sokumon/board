@@ -117,7 +117,6 @@ def create_board_entity(title, content, parent=None):
     drive_entity.name = uuid.uuid4().hex
     drive_entity.parent_drive_entity = parent
     drive_entity.mime_type = "board"
-    drive_entity.file_kind = ["PDF"]
     drive_entity.file_size = 0
     drive_entity.flags.file_created = True
     drive_entity.save()
